@@ -16,45 +16,10 @@ export default function ProjectLayers() {
 
   return (
     <>
-      <Sidebar open={true} name={"Layers"} >
-      <MlGeoJsonLayer
-                geojson={monitoringAreas}  
-                options={{
-                  paint: {
-                    "fill-color": "#5353ec",
-                    "fill-opacity": 0.5,
-                    "fill-outline-color": "#000",
-                  },
-                }}
-              />
-        <MlGeoJsonLayer
-              layerId="samples"
-              type="circle"
-              options={{
-                source: {
-                  type: "geojson",
-                  data: "csv://sources/samples.csv",
-                },
-                paint: {
-                  "circle-color": "#22BB5D",
-                  "circle-stroke-width": 1,
-                },
-              }}
-              labelProp="id"
-              labelOptions={{
-                layout: {
-                  "text-size": {
-                    stops: [
-                      [13, 15],
-                      [22, 60],
-                    ],
-                  },
-                },
-                minzoom: 13,
-              }}
-        />            
+      <Sidebar open={true} name={"Layers"} >          
         <LayerList>
           <LayerListItem
+            visible={true}
             configurable={true}
             type="layer"
             name="Monitoring areas"
@@ -72,6 +37,8 @@ export default function ProjectLayers() {
             }
           />
           <LayerListItem
+            visible={true}
+            type="layer"
             name="Samples"
             configurable={true}         
             layerComponent={
@@ -88,7 +55,7 @@ export default function ProjectLayers() {
                   "circle-stroke-width": 1,
                 },
               }}
-              labelProp="id"
+              labelProp="longitude"
               labelOptions={{
                 layout: {
                   "text-size": {
