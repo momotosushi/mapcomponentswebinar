@@ -1,3 +1,4 @@
+import monitoringAreas from "./monitoringAreas.json";
 import { 
   MlGeoJsonLayer , 
   useAddProtocol,  
@@ -6,9 +7,9 @@ import {
   LayerListItem,
   LayerList
 } from "@mapcomponents/react-maplibre";
-import monitoringAreas from "./monitoringAreas.json";
 
 export default function ProjectLayers() {
+
   useAddProtocol({
     protocol: "csv",
     handler: CSVProtocolHandler,
@@ -55,7 +56,7 @@ export default function ProjectLayers() {
                   "circle-stroke-width": 1,
                 },
               }}
-              labelProp="longitude"
+              labelProp="id"
               labelOptions={{
                 layout: {
                   "text-size": {
