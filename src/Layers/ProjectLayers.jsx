@@ -17,7 +17,7 @@ export default function ProjectLayers() {
 
   return (
     <>
-      <Sidebar open={true} name={"Layers"} >          
+      <Sidebar open={true} name={"Layers"} >  
         <LayerList>
           <LayerListItem
             visible={true}

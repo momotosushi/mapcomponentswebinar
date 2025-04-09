@@ -2,7 +2,7 @@ import "./App.css";
 import { MapLibreMap } from "@mapcomponents/react-maplibre";
 //import ProjectLayers from "./Layers/ProjectLayers";
 //import OSMLayer from "./Layers/OSMLayer";
-import BolzplatzLayer from "./Layers/BolzplatzLayer";
+import SportangebotLayer from "./Layers/SportangebotLayer";
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
         }}
         style={{ position: "absolute", top: 0, bottom: 0, left: 0, right: 0 }}
       />
-      <BolzplatzLayer />
+      <SportangebotLayer />
     </>
   );
 }
