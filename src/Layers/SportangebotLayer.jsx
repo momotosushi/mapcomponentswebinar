@@ -5,7 +5,7 @@ import {
     LayerListItem,
     LayerList,
   } from "@mapcomponents/react-maplibre";
-import bolzplatz from "./bolzplatz.json";
+import spielplatz from "./spielplatz.json";
 import hallenbad from "./hallenbad.json";
 import park from "./park.json";
 
@@ -22,10 +22,10 @@ export default function SportangebotLayer() {
                     visible={true}
                     configurable={true}
                     type="layer"
-                    name="bolzplatz"
+                    name="spielplatz"
                     layerComponent={
                         <MlGeoJsonLayer
-                        geojson={bolzplatz}
+                        geojson={spielplatz}
                         options={{
                         paint: {
                             "circle-radius": 7,
