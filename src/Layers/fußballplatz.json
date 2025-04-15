@@ -1,0 +1,434 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [6.991977, 50.733368]
+            },
+            "properties": {
+                "name": "Waldstadion Alfter",
+                "address": "Strangheidgesweg 100, 53347 Alfter",
+                "verein": "VfL Alfter",
+                "oeffnungszeiten": ""
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [7.154272, 50.697299]
+            },
+            "properties": {
+                "name": "Sportplatz Plittersdorf",
+                "address": "Neckarstraße, 53175 Bonn-Bad Godesberg-Plittersdorf",
+                "verein": "SSV Plittersdorf",
+                "oeffnungszeiten": "Rund um die Uhr"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [7, 50]
+            },
+            "properties": {
+                "name": "Altendorf-Ersdorf",
+                "address": "Pater-Müller-Str., 53340 Meckenheim-Ersdorf",
+                "verein": "SC Altendorf-Ersdorf e.V.",
+                "oeffnungszeiten": ""
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [7, 50]
+            },
+            "properties": {
+                "name": "Sportplatz Oberkassel",
+                "address": "Am Stingenberg, 53227 Bonn-Oberkassel",
+                "verein": "SV Oberkassel",
+                "oeffnungszeiten": ""
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [7, 50]
+            },
+            "properties": {
+                "name": "Sporplatz Berkum",
+                "address": "Fraunhoferstr., 53343 Wachtberg-Berkum",
+                "verein": "SV Wachtberg",
+                "oeffnungszeiten": ""                
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [7.146137, 50.751011]
+            },
+            "properties": {
+                "name": "Ascheplatz Beuel-Ost",
+                "address": "Siegburger Str. 321, 53229 Bonn",
+                "verein": "",
+                "oeffnungszeiten": "Rund um die Uhr?"                
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [7.050815, 50.703153]
+            },
+            "properties": {
+                "name": "Sportplatz Brüser Berg",
+                "address": "",
+                "verein": "Verein",
+                "oeffnungszeiten": "?"                
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [7.053283, 50.752891]
+            },
+            "properties": {
+                "name": "Sportplatz Buschdorf ",
+                "address": "Georg-Elser-Weg, 53117 Bonn",
+                "verein": "ASG Uni Bonn, SV Buschdorf 02 e.V.",
+                "oeffnungszeiten": ""                
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [7, 50]
+            },
+            "properties": {
+                "name": "Sporplatz ",
+                "address": "",
+                "verein": "Verein",
+                "oeffnungszeiten": ""                
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [7, 50]
+            },
+            "properties": {
+                "name": "Sporplatz ",
+                "address": "",
+                "verein": "Verein",
+                "oeffnungszeiten": ""                
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [7, 50]
+            },
+            "properties": {
+                "name": "Sporplatz ",
+                "address": "",
+                "verein": "Verein",
+                "oeffnungszeiten": ""                
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [7, 50]
+            },
+            "properties": {
+                "name": "Sporplatz ",
+                "address": "",
+                "verein": "Verein",
+                "oeffnungszeiten": ""                
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [7, 50]
+            },
+            "properties": {
+                "name": "Sporplatz ",
+                "address": "",
+                "verein": "Verein",
+                "oeffnungszeiten": ""                
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [7, 50]
+            },
+            "properties": {
+                "name": "Sporplatz ",
+                "address": "",
+                "verein": "Verein",
+                "oeffnungszeiten": ""                
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [7, 50]
+            },
+            "properties": {
+                "name": "Sporplatz ",
+                "address": "",
+                "verein": "Verein",
+                "oeffnungszeiten": ""                
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [7, 50]
+            },
+            "properties": {
+                "name": "Sporplatz ",
+                "address": "",
+                "verein": "Verein",
+                "oeffnungszeiten": ""                
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [7, 50]
+            },
+            "properties": {
+                "name": "Sporplatz ",
+                "address": "",
+                "verein": "Verein",
+                "oeffnungszeiten": ""                
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [7, 50]
+            },
+            "properties": {
+                "name": "Sporplatz ",
+                "address": "",
+                "verein": "Verein",
+                "oeffnungszeiten": ""                
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [7, 50]
+            },
+            "properties": {
+                "name": "Sporplatz ",
+                "address": "",
+                "verein": "Verein",
+                "oeffnungszeiten": ""                
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [7, 50]
+            },
+            "properties": {
+                "name": "Sporplatz ",
+                "address": "",
+                "verein": "Verein",
+                "oeffnungszeiten": ""                
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [7, 50]
+            },
+            "properties": {
+                "name": "Sporplatz ",
+                "address": "",
+                "verein": "Verein",
+                "oeffnungszeiten": ""                
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [7, 50]
+            },
+            "properties": {
+                "name": "Sporplatz ",
+                "address": "",
+                "verein": "Verein",
+                "oeffnungszeiten": ""                
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [7, 50]
+            },
+            "properties": {
+                "name": "Sporplatz ",
+                "address": "",
+                "verein": "Verein",
+                "oeffnungszeiten": ""                
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [7, 50]
+            },
+            "properties": {
+                "name": "Sporplatz ",
+                "address": "",
+                "verein": "Verein",
+                "oeffnungszeiten": ""                
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [7, 50]
+            },
+            "properties": {
+                "name": "Sporplatz ",
+                "address": "",
+                "verein": "Verein",
+                "oeffnungszeiten": ""                
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [7, 50]
+            },
+            "properties": {
+                "name": "Sporplatz ",
+                "address": "",
+                "verein": "Verein",
+                "oeffnungszeiten": ""                
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [7, 50]
+            },
+            "properties": {
+                "name": "Sporplatz ",
+                "address": "",
+                "verein": "Verein",
+                "oeffnungszeiten": ""                
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [7, 50]
+            },
+            "properties": {
+                "name": "Sporplatz ",
+                "address": "",
+                "verein": "Verein",
+                "oeffnungszeiten": ""                
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [7, 50]
+            },
+            "properties": {
+                "name": "Sporplatz ",
+                "address": "",
+                "verein": "Verein",
+                "oeffnungszeiten": ""                
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [7, 50]
+            },
+            "properties": {
+                "name": "Sporplatz ",
+                "address": "",
+                "verein": "Verein",
+                "oeffnungszeiten": ""                
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [7, 50]
+            },
+            "properties": {
+                "name": "Sporplatz ",
+                "address": "",
+                "verein": "Verein",
+                "oeffnungszeiten": ""                
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [7, 50]
+            },
+            "properties": {
+                "name": "Sporplatz ",
+                "address": "",
+                "verein": "Verein",
+                "oeffnungszeiten": ""                
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [7, 50]
+            },
+            "properties": {
+                "name": "Sporplatz ",
+                "address": "",
+                "verein": "Verein",
+                "oeffnungszeiten": ""                
+            }
+        }
+    ]
+}
