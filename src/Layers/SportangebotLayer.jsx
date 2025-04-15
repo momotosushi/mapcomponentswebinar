@@ -8,7 +8,7 @@ import {
 import spielplatz from "./spielplatz.json";
 import hallenbad from "./hallenbad.json";
 import park from "./park.json";
-import fussballplatz from "./fußballplatz.json";
+import fussballplatz from "./fussballplatz.json";
 
 export default function SportangebotLayer() {
 
