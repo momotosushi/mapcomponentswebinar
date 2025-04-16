@@ -31,25 +31,25 @@
             "type": "Feature",
             "geometry": {
                 "type": "Point",
-                "coordinates": [7, 50]
+                "coordinates": [7.010357, 50.596841]
             },
             "properties": {
-                "name": "Altendorf-Ersdorf",
-                "address": "Pater-Müller-Str., 53340 Meckenheim-Ersdorf",
+                "name": "Sportplatz Altendorf-Ersdorf",
+                "address": "Pater-Müller-Str. 17, 53340 Meckenheim-Ersdorf",
                 "verein": "SC Altendorf-Ersdorf e.V.",
-                "oeffnungszeiten": ""
+                "oeffnungszeiten": "Rund um die Uhr"
             }
         },
         {
             "type": "Feature",
             "geometry": {
                 "type": "Point",
-                "coordinates": [7, 50]
+                "coordinates": [7.171878, 50.714046]
             },
             "properties": {
                 "name": "Sportplatz Oberkassel",
                 "address": "Am Stingenberg, 53227 Bonn-Oberkassel",
-                "verein": "SV Oberkassel",
+                "verein": "Oberkassel FV",
                 "oeffnungszeiten": ""
             }
         },
@@ -57,11 +57,11 @@
             "type": "Feature",
             "geometry": {
                 "type": "Point",
-                "coordinates": [7, 50]
+                "coordinates": [7.131861, 50.618611]
             },
             "properties": {
                 "name": "Sporplatz Berkum",
-                "address": "Fraunhoferstr., 53343 Wachtberg-Berkum",
+                "address": "Fraunhoferstr. 15, 53343 Wachtberg-Berkum",
                 "verein": "SV Wachtberg",
                 "oeffnungszeiten": ""                
             }
@@ -109,91 +109,91 @@
             "type": "Feature",
             "geometry": {
                 "type": "Point",
-                "coordinates": [7, 50]
+                "coordinates": [7.040526, 50.737764]
             },
             "properties": {
-                "name": "Sporplatz ",
-                "address": "",
+                "name": "Sporplatz Dransdorf",
+                "address": "Kleingartenstraße, 53121 Bonn",
                 "verein": "Verein",
-                "oeffnungszeiten": ""                
+                "oeffnungszeiten": "Rund um die Uhr"                
             }
         },
         {
             "type": "Feature",
             "geometry": {
                 "type": "Point",
-                "coordinates": [7, 50]
+                "coordinates": [7.119008, 50.699701]
             },
             "properties": {
-                "name": "Sporplatz ",
-                "address": "",
-                "verein": "Verein",
-                "oeffnungszeiten": ""                
+                "name": "Ascheplatz Dottendorf",
+                "address": "Kessenicher Str. 260, 53129 Bonn",
+                "verein": "Hertha Bonn",
+                "oeffnungszeiten": "13:00-23:00"                
             }
         },
         {
             "type": "Feature",
             "geometry": {
                 "type": "Point",
-                "coordinates": [7, 50]
+                "coordinates": [7.137954, 50.733275]
             },
             "properties": {
-                "name": "Sporplatz ",
-                "address": "",
-                "verein": "Verein",
-                "oeffnungszeiten": ""                
+                "name": "Sporplatz Finkenberg",
+                "address": "Steinbruchweg 100, 53227 Bonn",
+                "verein": "SV Ennert",
+                "oeffnungszeiten": "?"                
             }
         },
         {
             "type": "Feature",
             "geometry": {
                 "type": "Point",
-                "coordinates": [7, 50]
+                "coordinates": [7.123505, 50.698275]
             },
             "properties": {
-                "name": "Sporplatz ",
-                "address": "",
-                "verein": "Verein",
-                "oeffnungszeiten": ""                
+                "name": "Sporplatz Friesdorf",
+                "address": "Margaretenstraße 13, 53175 Bonn",
+                "verein": "FC Blau-Weiß Friesdorf e.V.",
+                "oeffnungszeiten": "Rund um die Uhr"                
             }
         },
         {
             "type": "Feature",
             "geometry": {
                 "type": "Point",
-                "coordinates": [7, 50]
+                "coordinates": [7.074272, 50.760858]
             },
             "properties": {
-                "name": "Sporplatz ",
-                "address": "",
-                "verein": "Verein",
-                "oeffnungszeiten": ""                
+                "name": "Sporplatz Graurheindorf",
+                "address": "Kopenhagener Str. 17, 53117 Bonn",
+                "verein": "TV 1911 Bonn Rheindorf",
+                "oeffnungszeiten": "?"                
             }
         },
         {
             "type": "Feature",
             "geometry": {
                 "type": "Point",
-                "coordinates": [7, 50]
+                "coordinates": [7.060098, 50.741966]
             },
             "properties": {
-                "name": "Sporplatz ",
-                "address": "",
-                "verein": "Verein",
-                "oeffnungszeiten": ""                
+                "name": "Sporplatz Tannenbusch",
+                "address": "Hohe Str. 13-19, 53119 Bonn",
+                "verein": "MSV Bonn e.V.",
+                "oeffnungszeiten": "?"                
             }
         },
         {
             "type": "Feature",
             "geometry": {
                 "type": "Point",
-                "coordinates": [7, 50]
+                "coordinates": [7.087743, 50.697646]
             },
             "properties": {
-                "name": "Sporplatz ",
-                "address": "",
-                "verein": "Verein",
-                "oeffnungszeiten": ""                
+                "name": "Sporplatz Ippendorf",
+                "address": "Netzestraße 11, 53127 Bonn",
+                "verein": "SF Ippendorf 1923 e.V.",
+                "oeffnungszeiten": "Rund um die Uhr"                
             }
         },
         {
