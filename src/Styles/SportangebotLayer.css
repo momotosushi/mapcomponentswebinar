@@ -22,7 +22,7 @@ button:active {
 }
 
 #duration-slider {
-    width: 100%;
+    width: 77%;
     height: 8px;
     background: #ddd;
     border-radius: 5px; /*Runde ecken*/

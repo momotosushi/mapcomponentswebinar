@@ -65,7 +65,7 @@ export default function SportangebotLayer() {
         <>
         <Sidebar open={true} name={"Layers"} >    
             <button onClick={() => setFilterOpen(!filterOpen)}>
-                {filterOpen ? "Alle anzeigen" : "Nur jetzt geöffnete anzeigen"}
+                {filterOpen ? "Alle anzeigen" : "Nur geöffnete anzeigen"}
             </button>
             <div>
                 <label htmlFor="duration-slider">Für die nächsten {filterDuration} Stunden offen</label>
@@ -73,7 +73,7 @@ export default function SportangebotLayer() {
                     id="duration-slider"
                     type="range"
                     min="0.5"
-                    max="6"
+                    max="12"
                     step="0.5"
                     value={filterDuration}
                     onChange={handleSliderChange}
