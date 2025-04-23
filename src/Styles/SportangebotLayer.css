@@ -28,16 +28,16 @@ button:active {
     border-radius: 5px; /*Runde ecken*/
     outline: none; /* Remove outline */
     transition: background 0.3s ease; /* Smooth transition for hover effect */
-    margin-top: 10px; 
+    margin-top: 10px;
+    margin-bottom: 15px; 
 
 }
 
 #duration-slider:hover {
-    background: #ccc; /* Darker track color on hover */
+    background: #ccc; /* Dunkler beim Hovern */
 }
 
 #duration-slider::-webkit-slider-thumb {
-    -webkit-appearance: none; /* Remove default styling for WebKit browsers */
     appearance: none;
     width: 20px; /* Thumb width */
     height: 20px; /* Thumb height */
@@ -48,8 +48,8 @@ button:active {
 }
 
 #duration-slider::-webkit-slider-thumb:hover {
-    background: #0056b3; /* Darker thumb color on hover */
-    transform: scale(1.1); /* Slightly enlarge thumb on hover */
+    background: #0056b3; /* Dunkler beim hovern */
+    transform: scale(1.1); /* Etwas größer beim hovern */
 }
 
 #duration-slider::-moz-range-thumb {
@@ -64,4 +64,41 @@ button:active {
 #duration-slider::-moz-range-thumb:hover {
     background: #0056b3;
     transform: scale(1.1);
+}
+#radius-slider {
+    width: 77%;
+    height: 8px;
+    background: #ddd;
+    border-radius: 5px; /* Runde Ecken */
+    outline: none; /* Remove outline */
+    transition: background 0.3s ease; /* Smooth transition for hover effect */
+    margin-top: 10px; 
+}
+
+#radius-slider:hover {
+    background: #ccc; /*  Dunkler beim Hovern */
+}
+
+#radius-slider::-webkit-slider-thumb {
+    appearance: none;
+    width: 20px; /* Thumb width */
+    height: 20px; /* Thumb height */
+    background: #007BFF; /* Thumb color */
+    border-radius: 50%; /* Circular thumb */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background 0.3s ease, transform 0.2s ease; /* Smooth hover effect */
+}
+
+#radius-slider::-webkit-slider-thumb:hover { /* Thumb */
+    background: #0056b3; /* Dunkler thumb beim hovern */
+    transform: scale(1.1); /* Etwas größer beim hovern */
+}
+
+#radius-slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: #007BFF;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
 }

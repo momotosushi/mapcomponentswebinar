@@ -4,11 +4,14 @@ import {
     Sidebar, 
     LayerListItem,
     LayerList,
+    useMap
   } from "@mapcomponents/react-maplibre";
+import { circle } from "@turf/turf";
 import spielplatz from "./spielplatz.json";
 import hallenbad from "./hallenbad.json";
 import park from "./park.json";
 import fussballplatz from "./fussballplatz.json";
+import restaurant from "./restaurant.json";
 import '../Styles/SportangebotLayer.css';
 
 export default function SportangebotLayer() {
@@ -16,8 +19,28 @@ export default function SportangebotLayer() {
     const [filterOpen, setFilterOpen] = useState(false);
     const [filterDuration, setFilterDuration] = useState(0.5); // Auswahl der Stunden
 
+    const [selectedPoint, setSelectedPoint] = useState(null); // Store the selected point
+    const [radius, setRadius] = useState(1000); // Radius in meter
+
+    const mapHook = useMap(); //Speichern der Koordinaten beim Klicken
+    mapHook.map?.on("click", (e) => {
+        const { lng, lat } = e.lngLat;
+        setSelectedPoint({
+            type: "Feature",
+            geometry: {
+                type: "Point",
+                coordinates: [lng, lat],
+            },
+            properties: {},
+        });
+    });
+
     const handleSliderChange = (event) => {
         setFilterDuration(Number(event.target.value));
+    };
+
+    const handleRadiusChange = (event) => {
+        setRadius(Number(event.target.value));
     };
 
     const filterHallenbadByTime = () => {
@@ -39,7 +62,9 @@ export default function SportangebotLayer() {
             const daySchedule = oeffnungszeiten.find((entry) => entry.tag === currentDay);
             if (!daySchedule) return false;
     
-            // Helper function to check if the current time is within a time range
+            // Funktion um zu prüfen, ob die Zeitspanne geöffnet ist
+            // und ob die Zeitspanne die geforderte Zeitspanne abdeckt
+            // Beispiel: "08:00–12:00" -> [480, 720]
             const isOpenForDuration = (timeRange) => {
                 if (!timeRange || !timeRange.includes("–")) return false;
                 try {
@@ -57,9 +82,53 @@ export default function SportangebotLayer() {
             return isOpenForDuration(daySchedule.zeit) || isOpenForDuration(daySchedule.zeit_2);
         });
     };
+
+    //Radius/Kreis um den Punkt
+    const circleGeoJSON = selectedPoint 
+        ? circle(selectedPoint.geometry.coordinates, radius / 1000, {
+              steps: 64, // Anzahl Kanten
+              units: "kilometers",
+          })
+        : null;
     
-    //const [Layer, setLayer] = useState(true);
-    const filteredHallenbad = filterOpen ? { ...hallenbad, features: filterHallenbadByTime() } : hallenbad;
+    const filterFeaturesByRadius = (geojson) => {
+        if (!selectedPoint) return geojson.features;
+
+        const [lng, lat] = selectedPoint.geometry.coordinates;
+        const toRadians = (degrees) => degrees * (Math.PI / 180);
+        const earthRadius = 6371000; // Erde Radius in Metern
+
+        return geojson.features.filter((feature) => {
+            const [featureLng, featureLat] = feature.geometry.coordinates;
+            const dLat = toRadians(featureLat - lat);
+            const dLng = toRadians(featureLng - lng);
+            const a = 
+                Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                Math.cos(toRadians(lat)) * Math.cos(toRadians(featureLat)) *
+                Math.sin(dLng / 2) * Math.sin(dLng / 2);
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+            const distance = earthRadius * c; // Distance in meters
+            return distance <= radius;
+        });
+    };
+
+    const filteredHallenbad = filterOpen 
+        ? { 
+            ...hallenbad, 
+            features: filterFeaturesByRadius({
+                ...hallenbad,
+                features: filterHallenbadByTime(),
+            }),
+        } 
+        : { 
+            ...hallenbad, 
+            features: filterFeaturesByRadius(hallenbad),
+        };
+
+    const filteredSpielplatz =    { ...spielplatz, features: filterFeaturesByRadius(spielplatz) };
+    const filteredPark =          { ...park, features: filterFeaturesByRadius(park) };
+    const filteredFussballplatz = { ...fussballplatz, features: filterFeaturesByRadius(fussballplatz) };
+    const filteredRestaurant =    { ...restaurant, features: filterFeaturesByRadius(restaurant) };
 
     return(
         <>
@@ -78,7 +147,20 @@ export default function SportangebotLayer() {
                     value={filterDuration}
                     onChange={handleSliderChange}
                 />
-            </div>      
+            </div>
+            <div>
+                <label htmlFor="radius-slider">Radius: {radius} Meter</label><br />
+                <input
+                    id="radius-slider"
+                    type="range"
+                    min="250"
+                    max="7000"
+                    step="250"
+                    value={radius}
+                    onChange={handleRadiusChange}
+                />    
+            </div>
+ 
             <LayerList>
                 <LayerListItem
                     visible={false} 
@@ -87,7 +169,7 @@ export default function SportangebotLayer() {
                     configurable={true}
                     layerComponent={
                         <MlGeoJsonLayer
-                        geojson={spielplatz}
+                        geojson={filteredSpielplatz}
                         options={{
                         paint: {
                             "circle-radius": 7,
@@ -105,7 +187,7 @@ export default function SportangebotLayer() {
                     configurable={true}         
                     layerComponent={
                         <MlGeoJsonLayer
-                        geojson={park}
+                        geojson={filteredPark}
                         options={{
                         paint: {
                             "circle-radius": 7,
@@ -141,7 +223,25 @@ export default function SportangebotLayer() {
                     configurable={true}         
                     layerComponent={
                         <MlGeoJsonLayer
-                        geojson={fussballplatz}
+                        geojson={filteredFussballplatz}
+                        options={{
+                        paint: {
+                            "circle-radius": 7,
+                            "circle-color": "#FF0000",
+                        },
+                        }}
+                        labelProp="name"
+                        />
+                    }
+                />
+                <LayerListItem
+                    visible={true}
+                    type="layer"
+                    name="restaurant"
+                    configurable={true}         
+                    layerComponent={
+                        <MlGeoJsonLayer
+                        geojson={filteredRestaurant}
                         options={{
                         paint: {
                             "circle-radius": 7,
@@ -154,6 +254,36 @@ export default function SportangebotLayer() {
                 />
             </LayerList>  
         </Sidebar>
+        {selectedPoint && (
+            <>
+                <MlGeoJsonLayer
+                    geojson={{
+                        type: "FeatureCollection",
+                        features: [selectedPoint],
+                    }}
+                    options={{
+                        paint: {
+                            "circle-radius": 7,
+                            "circle-color": "#000000",
+                        },
+                    }}
+                />
+                {circleGeoJSON && (
+                    <MlGeoJsonLayer
+                        geojson={{
+                            type: "FeatureCollection",
+                            features: [circleGeoJSON],
+                        }}
+                        options={{
+                            paint: {
+                                "fill-color": "#0056b3",
+                                "fill-opacity": 0.2,
+                            },
+                        }}
+                    />
+                )}
+            </>
+        )}
         </>
     );
 }
