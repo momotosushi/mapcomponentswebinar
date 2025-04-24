@@ -29,7 +29,37 @@
         "roof:shape": "pyramidal",
         "wheelchair": "yes",
         "wheelchair:description": "Lift zu Toiletten bei Bedienung erfragen",
-        "wikimedia_commons": "Category:Ludwig-Erhard-Allee 20 (Bonn)"
+        "wikimedia_commons": "Category:Ludwig-Erhard-Allee 20 (Bonn)",
+        "oeffnungszeiten": [
+          {
+            "tag": "Montag",
+            "zeit": "geschlossen"
+          },
+          {
+            "tag": "Dienstag",
+            "zeit": "12:00-18:00"
+          },
+          {
+            "tag": "Mittwoch",
+            "zeit": "12:00-18:00"
+          },
+          {
+            "tag": "Donnerstag",
+            "zeit": "12:00-18:00"
+          },
+          {
+            "tag": "Freitag",
+            "zeit": "12:00-18:00"
+          },
+          {
+            "tag": "Samstag",
+            "zeit": "11:00-18:00"
+          },
+          {
+            "tag": "Sonntag",
+            "zeit": "11:00-18:00"
+          }
+        ]
       },
       "geometry": {
         "type": "Point",

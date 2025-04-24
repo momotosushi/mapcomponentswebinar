@@ -1,0 +1,142 @@
+{
+  "type": "FeatureCollection",
+  "generator": "overpass-turbo",
+  "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.",
+  "timestamp": "2024-10-14T07:39:13Z",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/24759319",
+        "addr:city": "Bonn",
+        "addr:country": "DE",
+        "addr:housenumber": "20",
+        "addr:postcode": "53175",
+        "addr:street": "Ludwig-Erhard-Allee",
+        "amenity": "restaurant",
+        "brewery": "Hofbräu München",
+        "building": "yes",
+        "building:levels": "1",
+        "contact:fax": "+49 228 378522",
+        "contact:phone": "+49 228 374030",
+        "contact:website": "http://www.rheinaue.de",
+        "diet:vegan": "yes",
+        "diet:vegetarian": "yes",
+        "indoor_seating": "yes",
+        "name": "Parkrestaurant RheinAue",
+        "outdoor_seating": "yes",
+        "roof:shape": "pyramidal",
+        "wheelchair": "yes",
+        "wheelchair:description": "Lift zu Toiletten bei Bedienung erfragen",
+        "wikimedia_commons": "Category:Ludwig-Erhard-Allee 20 (Bonn)",
+        "oeffnungszeiten": [
+          {
+            "tag": "Montag",
+            "zeit": "geschlossen"
+          },
+          {
+            "tag": "Dienstag",
+            "zeit": "geschlossen"
+          },
+          {
+            "tag": "Mittwoch",
+            "zeit": "geschlossen"
+          },
+          {
+            "tag": "Donnerstag",
+            "zeit": "11:00-15:00"
+          },
+          {
+            "tag": "Freitag",
+            "zeit": "geschlossen"
+          },
+          {
+            "tag": "Samstag",
+            "zeit": "geschlossen"
+          },
+          {
+            "tag": "Sonntag",
+            "zeit": "geschlossen"
+          }
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.140735,
+          50.7106407
+        ]
+      },
+      "id": "way/24759319"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/30070888",
+        "addr:city": "Bonn",
+        "addr:country": "DE",
+        "addr:housenumber": "59",
+        "addr:postcode": "53115",
+        "addr:street": "Clemens-August-Straße",
+        "amenity": "restaurant",
+        "building": "yes",
+        "building:levels": "2",
+        "diet:vegetarian": "yes",
+        "heritage": "8",
+        "heritage:operator": "UntereDenkmalbehörde",
+        "heritage:ref": "A 1045",
+        "indoor_seating": "yes",
+        "name": "Gesindehaus",
+        "old_name": "James Joyce Poppelsdorf",
+        "outdoor_seating": "yes",
+        "payment:cash": "yes",
+        "payment:mastercard": "yes",
+        "payment:visa": "yes",
+        "roof:shape": "gabled",
+        "toilets:changing_table": "yes",
+        "website": "https://www.gesindehaus-bonn.de/",
+        "wheelchair": "no",
+        "wikidata": "Q52833280",
+        "wikimedia_commons": "Category:Clemens-August-Straße 59 (Bonn)",
+        "oeffnungszeiten": [
+          {
+            "tag": "Montag",
+            "zeit": "12:00-15:00"
+          },
+          {
+            "tag": "Dienstag",
+            "zeit": "geschlossen"
+          },
+          {
+            "tag": "Mittwoch",
+            "zeit": "geschlossen"
+          },
+          {
+            "tag": "Donnerstag",
+            "zeit": "6:00-20:00"
+          },
+          {
+            "tag": "Freitag",
+            "zeit": "geschlossen"
+          },
+          {
+            "tag": "Samstag",
+            "zeit": "geschlossen"
+          },
+          {
+            "tag": "Sonntag",
+            "zeit": "geschlossen"
+          }
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.088837,
+          50.7221036
+        ]
+      },
+      "id": "way/30070888"
+    }
+  ]
+}

@@ -11,7 +11,7 @@ import spielplatz from "./spielplatz.json";
 import hallenbad from "./hallenbad.json";
 import park from "./park.json";
 import fussballplatz from "./fussballplatz.json";
-import restaurant from "./restaurant.json";
+import restaurant from "./restaurant_modified.json";
 import '../Styles/SportangebotLayer.css';
 
 export default function SportangebotLayer() {
@@ -43,32 +43,29 @@ export default function SportangebotLayer() {
         setRadius(Number(event.target.value));
     };
 
-    const filterHallenbadByTime = () => {
+    const filterByTime = (geojson) => {
         const now = new Date();
-        //const now = new Date(2025, 3, 15, 23, 0, 0); // April 15, 2025, 14:00 Test Data
-        const currentDay = now.toLocaleString("de-DE", { weekday: "long" }); // e.g., "Montag"
+        const currentDay = now.toLocaleString("de-DE", { weekday: "long" }); // zB, "Montag"
         const currentTime = now.getHours() * 60 + now.getMinutes(); // Time in minutes since midnight
-        const requiredOpenTime = currentTime + filterDuration * 60; // Slider wert in Minuten
+        const requiredOpenTime = currentTime + filterDuration * 60; // Slider value in minutes
     
-        return hallenbad.features.filter((feature) => {
+        return geojson.features.filter((feature) => {
             const oeffnungszeiten = feature.properties.oeffnungszeiten;
     
-            // Wenn oeffnungszeiten kein Array ist oder nicht existiert, dann return false
-            if (!oeffnungszeiten || typeof oeffnungszeiten !== "object" || !Array.isArray(oeffnungszeiten)) {
+            // If oeffnungszeiten is not an array or doesn't exist, return false
+            if (!oeffnungszeiten || !Array.isArray(oeffnungszeiten)) {
                 return false;
             }
     
-            // Current Day im Array oeffnungszeiten vorhanden?
+            // Find the schedule for the current day
             const daySchedule = oeffnungszeiten.find((entry) => entry.tag === currentDay);
-            if (!daySchedule) return false;
+            if (!daySchedule || !daySchedule.zeit) return false;
     
-            // Funktion um zu prüfen, ob die Zeitspanne geöffnet ist
-            // und ob die Zeitspanne die geforderte Zeitspanne abdeckt
-            // Beispiel: "08:00–12:00" -> [480, 720]
+            // Check if the time range covers the required duration
             const isOpenForDuration = (timeRange) => {
-                if (!timeRange || !timeRange.includes("–")) return false;
+                if (!timeRange || !timeRange.includes("-")) return false;
                 try {
-                    const [start, end] = timeRange.split("–").map((time) => {
+                    const [start, end] = timeRange.split("-").map((time) => {
                         const [hours, minutes] = time.split(":").map(Number);
                         return hours * 60 + minutes;
                     });
@@ -113,22 +110,34 @@ export default function SportangebotLayer() {
     };
 
     const filteredHallenbad = filterOpen 
-        ? { 
-            ...hallenbad, 
-            features: filterFeaturesByRadius({
-                ...hallenbad,
-                features: filterHallenbadByTime(),
-            }),
-        } 
-        : { 
-            ...hallenbad, 
-            features: filterFeaturesByRadius(hallenbad),
-        };
+    ? { 
+        ...hallenbad, 
+        features: filterFeaturesByRadius({
+            ...hallenbad,
+            features: filterByTime(hallenbad),
+        }),
+    } 
+    : { 
+        ...hallenbad, 
+        features: filterFeaturesByRadius(hallenbad),
+    };
+
+const filteredRestaurant = filterOpen 
+    ? { 
+        ...restaurant, 
+        features: filterFeaturesByRadius({
+            ...restaurant,
+            features: filterByTime(restaurant),
+        }),
+    } 
+    : { 
+        ...restaurant, 
+        features: filterFeaturesByRadius(restaurant),
+    };
 
     const filteredSpielplatz =    { ...spielplatz, features: filterFeaturesByRadius(spielplatz) };
     const filteredPark =          { ...park, features: filterFeaturesByRadius(park) };
     const filteredFussballplatz = { ...fussballplatz, features: filterFeaturesByRadius(fussballplatz) };
-    const filteredRestaurant =    { ...restaurant, features: filterFeaturesByRadius(restaurant) };
 
     return(
         <>
@@ -149,7 +158,7 @@ export default function SportangebotLayer() {
                 />
             </div>
             <div>
-                <label htmlFor="radius-slider">Radius: {radius} Meter</label><br />
+                <label htmlFor="radius-slider">Radius: {radius/1000.00} km</label><br />
                 <input
                     id="radius-slider"
                     type="range"
