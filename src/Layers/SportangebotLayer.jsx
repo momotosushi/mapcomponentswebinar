@@ -11,7 +11,7 @@ import spielplatz from "./spielplatz.json";
 import hallenbad from "./hallenbad.json";
 import park from "./park.json";
 import fussballplatz from "./fussballplatz.json";
-import restaurant from "./restaurant_modified.json";
+import restaurant from "./restaurant_modified2.json";
 import '../Styles/SportangebotLayer.css';
 
 export default function SportangebotLayer() {
@@ -46,18 +46,18 @@ export default function SportangebotLayer() {
     const filterByTime = (geojson) => {
         const now = new Date();
         const currentDay = now.toLocaleString("de-DE", { weekday: "long" }); // zB, "Montag"
-        const currentTime = now.getHours() * 60 + now.getMinutes(); // Time in minutes since midnight
-        const requiredOpenTime = currentTime + filterDuration * 60; // Slider value in minutes
+        const currentTime = now.getHours() * 60 + now.getMinutes(); // Zeit in Minuten bis Mitternacht
+        const requiredOpenTime = currentTime + filterDuration * 60; // Slider wert in minuten
     
         return geojson.features.filter((feature) => {
             const oeffnungszeiten = feature.properties.oeffnungszeiten;
     
-            // If oeffnungszeiten is not an array or doesn't exist, return false
+            // wenn oeffnungszeiten kein array ist oder nicht existiert, return false
             if (!oeffnungszeiten || !Array.isArray(oeffnungszeiten)) {
                 return false;
             }
     
-            // Find the schedule for the current day
+            // Finde den "Schedule" für den current day
             const daySchedule = oeffnungszeiten.find((entry) => entry.tag === currentDay);
             if (!daySchedule || !daySchedule.zeit) return false;
     
@@ -104,7 +104,7 @@ export default function SportangebotLayer() {
                 Math.cos(toRadians(lat)) * Math.cos(toRadians(featureLat)) *
                 Math.sin(dLng / 2) * Math.sin(dLng / 2);
             const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-            const distance = earthRadius * c; // Distance in meters
+            const distance = earthRadius * c; // Distanz in metern
             return distance <= radius;
         });
     };
