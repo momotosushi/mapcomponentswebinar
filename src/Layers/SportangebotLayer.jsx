@@ -35,6 +35,16 @@ export default function SportangebotLayer() {
         });
     });
 
+    // Rechtsklick-Funktion um die Punkt-Lösch-Funktion zu aktivieren
+    mapHook.map?.on("contextmenu", (e) => {
+         clearSelectedPoint();
+    });
+
+     // Funktion um den Punkt zu löschen
+     const clearSelectedPoint = () => {
+         setSelectedPoint(null); // Clear the selected point
+    };
+
     const handleSliderChange = (event) => {
         setFilterDuration(Number(event.target.value));
     };
@@ -172,7 +182,7 @@ const filteredRestaurant = filterOpen
  
             <LayerList>
                 <LayerListItem
-                    visible={false} 
+                    visible={false} // SET true
                     type="layer"
                     name="spielplatz"
                     configurable={true}
