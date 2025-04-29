@@ -290,7 +290,8 @@ const filteredRestaurant = filterOpen
                         />
                     }
                 />
-            </LayerList>  
+            </LayerList>
+            <text>(Links-Klick in die Karte um einen Punkt zu bestimmen <br/>Rechts-Klick in die Karte um den Punkt zu entfernen)</text> 
         </Sidebar>
         {selectedPoint && (
             <>
