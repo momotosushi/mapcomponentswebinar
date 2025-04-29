@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {useEffect, useState } from "react";
 import { 
     MlGeoJsonLayer , 
     Sidebar, 
@@ -19,30 +19,49 @@ export default function SportangebotLayer() {
     const [filterOpen, setFilterOpen] = useState(false);
     const [filterDuration, setFilterDuration] = useState(0.5); // Auswahl der Stunden
 
-    const [selectedPoint, setSelectedPoint] = useState(null); // Store the selected point
+    const [selectedPoint, setSelectedPoint] = useState(null); // Ausgewählter Punkt
     const [radius, setRadius] = useState(1000); // Radius in meter
 
     const mapHook = useMap(); //Speichern der Koordinaten beim Klicken
-    mapHook.map?.on("click", (e) => {
-        const { lng, lat } = e.lngLat;
-        setSelectedPoint({
-            type: "Feature",
-            geometry: {
-                type: "Point",
-                coordinates: [lng, lat],
-            },
-            properties: {},
-        });
-    });
+    
+    useEffect(() => {
+        const map = mapHook.map;
 
-    // Rechtsklick-Funktion um die Punkt-Lösch-Funktion zu aktivieren
-    mapHook.map?.on("contextmenu", (e) => {
-         clearSelectedPoint();
-    });
+        if (!map) return; // Map verfügbar?
+
+        // Linksklick-Funktion um den Punkt zu setzen
+        const handleMapClick = (e) => {
+            const { lng, lat } = e.lngLat;
+            setSelectedPoint({
+                type: "Feature",
+                geometry: {
+                    type: "Point",
+                    coordinates: [lng, lat],
+                },
+                properties: {},
+            });
+        };
+
+        // Rechtsklick-Funktion um die Punkt-Lösch-Funktion zu aktivieren
+        const handleContextMenu = () => {
+            clearSelectedPoint();
+        };
+
+        // Hinzufügen von Rechtsklick- und Linksklick
+        map.on("click", handleMapClick);
+        map.on("contextmenu", handleContextMenu);
+
+        // Clean Up der Event-Listener, wenn die Komponente unmounted (nicht mehr gerendert)
+        //  oder sich die dependencies ändern
+        return () => {
+            map.off("click", handleMapClick);
+            map.off("contextmenu", handleContextMenu);
+        };
+    }, [mapHook.map]); // Dependency array, verhindert unnötige Aufrufe
 
      // Funktion um den Punkt zu löschen
      const clearSelectedPoint = () => {
-         setSelectedPoint(null); // Clear the selected point
+         setSelectedPoint(null); // Zurücksetzen auf Null/löschen des ausgewählten Punktes
     };
 
     const handleSliderChange = (event) => {
@@ -62,7 +81,7 @@ export default function SportangebotLayer() {
         return geojson.features.filter((feature) => {
             const oeffnungszeiten = feature.properties.oeffnungszeiten;
     
-            // wenn oeffnungszeiten kein array ist oder nicht existiert, return false
+            // Wenn oeffnungszeiten kein array ist oder nicht existiert, return false
             if (!oeffnungszeiten || !Array.isArray(oeffnungszeiten)) {
                 return false;
             }
@@ -71,7 +90,7 @@ export default function SportangebotLayer() {
             const daySchedule = oeffnungszeiten.find((entry) => entry.tag === currentDay);
             if (!daySchedule || !daySchedule.zeit) return false;
     
-            // Check if the time range covers the required duration
+            // Checken ob
             const isOpenForDuration = (timeRange) => {
                 if (!timeRange || !timeRange.includes("-")) return false;
                 try {
