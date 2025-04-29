@@ -7,11 +7,11 @@ import {
     useMap
   } from "@mapcomponents/react-maplibre";
 import { circle } from "@turf/turf";
-import spielplatz from "./spielplatz.json";
-import hallenbad from "./hallenbad.json";
-import park from "./park.json";
-import fussballplatz from "./fussballplatz.json";
-import restaurant from "./restaurant_modified2.json";
+import spielplatz from "../Data/spielplatz.json";
+import hallenbad from "../Data/hallenbad.json";
+import park from "../Data/park.json";
+import fussballplatz from "../Data/fussballplatz.json";
+import restaurant from "../Data/restaurant_modified2.json";
 import '../Styles/SportangebotLayer.css';
 
 export default function SportangebotLayer() {
