@@ -1,0 +1,46 @@
+x-django-environment-variables: &django-env-variables
+  DJANGO_DB_HOST: ${DJANGO_DB_HOST}
+  DJANGO_DB_NAME: ${DJANGO_DB_NAME}
+  DJANGO_DB_USER: ${DJANGO_DB_USER}
+  DJANGO_DB_PASS: ${DJANGO_DB_PASS}
+  DJANGO_DB_SCHEMA: ${DJANGO_DB_SCHEMA}
+  DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY}
+  DJANGO_DEBUG: ${DJANGO_DEBUG}
+  DJANGO_ALLOWED_HOSTS: ${DJANGO_ALLOWED_HOSTS}
+  DJANGO_TRUSTED_ORIGINS: ${DJANGO_TRUSTED_ORIGINS}
+
+
+
+services:
+  rproxy:
+    environment:
+       APACHE_SERVER_NAME: ${APACHE_SERVER_NAME}
+       APACHE_SSL_CERTIFICATE_FILE: ${APACHE_SSL_CERTIFICATE_FILE}
+    restart: always
+
+  web-app:
+    restart: always
+
+  # djangoapi:
+  #   environment:
+  #     <<: *django-env-variables
+  #   restart: always
+  #   volumes:
+  #     - ./volumes/djangoapi/certs:/app/certs:rw
+  #   depends_on:
+  #     db:
+  #       condition: service_healthy
+  db:
+    restart: always
+    volumes:
+      - ./volumes/db/data:/var/lib/postgresql/data:rw
+    environment:
+      POSTGRES_USER: ${DJANGO_DB_USER}
+      POSTGRES_PASSWORD: ${DJANGO_DB_PASS}
+      POSTGRES_DB: ${DJANGO_DB_NAME}
+    healthcheck: # https://stackoverflow.com/questions/65115627/safe-ways-to-specify-postgres-parameters-for-healthchecks-in-docker-compose
+      test: ["CMD-SHELL", "pg_isready -U ${DJANGO_DB_USER} -d ${DJANGO_DB_NAME}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+

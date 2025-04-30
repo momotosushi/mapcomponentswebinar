@@ -1,0 +1,26 @@
+services:
+  rproxy:
+    build: ../services/service/rproxy/
+    volumes:
+      - ../services/service/rproxy/ssl/:/etc/ssl/private/:ro
+    ports:
+      - "880:80"
+      - "8443:443"
+    
+
+  web-app:
+    build: 
+      context: ../services/service/web-app/
+
+  # djangoapi:
+  #   build: ../services/service/djangoapi/
+  #   volumes:
+  #     - ../services/service/djangoapi:/app
+  #   command: python /app/manage.py runserver 0.0.0.0:8000
+  #   ports:
+  #     - 3000:3000
+
+  db:
+    build: ../services/service/db
+    ports:
+      - 55432:5432
