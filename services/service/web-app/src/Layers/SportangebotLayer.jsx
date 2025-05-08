@@ -175,7 +175,7 @@ const filteredRestaurant = filterOpen
                 {filterOpen ? "Alle anzeigen" : "Nur geöffnete anzeigen"}
             </button>
             <div>
-                <label htmlFor="duration-slider">Für die nächsten {filterDuration} Stunden offen</label>
+                <label htmlFor="duration-slider">Jetzt, für die nächsten {filterDuration} Stunden offen</label>
                 <input
                     id="duration-slider"
                     type="range"
