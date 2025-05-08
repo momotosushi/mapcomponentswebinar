@@ -15,21 +15,21 @@ services:
   rproxy:
     environment:
        APACHE_SERVER_NAME: ${APACHE_SERVER_NAME}
+       APACHE_SERVER_NAME_BACKEND: ${APACHE_SERVER_NAME_BACKEND}
        APACHE_SSL_CERTIFICATE_FILE: ${APACHE_SSL_CERTIFICATE_FILE}
     restart: always
 
   web-app:
     restart: always
 
-  # djangoapi:
-  #   environment:
-  #     <<: *django-env-variables
-  #   restart: always
-  #   volumes:
-  #     - ./volumes/djangoapi/certs:/app/certs:rw
-  #   depends_on:
-  #     db:
-  #       condition: service_healthy
+  djangoapi:
+    environment:
+      <<: *django-env-variables
+    restart: always
+    depends_on:
+      db:
+        condition: service_healthy
+        
   db:
     restart: always
     volumes:

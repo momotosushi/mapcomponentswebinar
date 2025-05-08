@@ -12,13 +12,13 @@ services:
     build: 
       context: ../services/service/web-app/
 
-  # djangoapi:
-  #   build: ../services/service/djangoapi/
-  #   volumes:
-  #     - ../services/service/djangoapi:/app
-  #   command: python /app/manage.py runserver 0.0.0.0:8000
-  #   ports:
-  #     - 3000:3000
+  djangoapi:
+    build: ../services/service/djangoapi/
+    volumes:
+      - ../services/service/djangoapi:/app
+    command: python /app/manage.py runserver 0.0.0.0:8000
+    ports:
+      - 3000:3000
 
   db:
     build: ../services/service/db
