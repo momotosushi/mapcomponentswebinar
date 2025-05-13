@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.gis',
+    'djangoapi',
 ]
 
 MIDDLEWARE = [
@@ -79,6 +81,14 @@ SESSION_TIMEOUT_REDIRECT =  '/' + BASE_URL_PATH +'admin/' # Add your URL
 
 LOGIN_URL =  '/' + BASE_URL_PATH +'admin/'
 
+REST_FRAMEWORK = {
+   'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',  # Nur JSON-Ausgabe
+    ),
+}
+
+
+
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
@@ -95,7 +105,6 @@ DATABASES = {
         },
     },
 }
-
 
 CORS_ALLOW_ALL_ORIGINS = True
 

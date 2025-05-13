@@ -18,7 +18,10 @@ from django.contrib import admin
 from django.urls import path
 
 from .settings import BASE_URL_PATH
+from .views.GetInfo import GetInfo
+
 
 urlpatterns = [
     path(BASE_URL_PATH + 'admin/', admin.site.urls),
+    path(BASE_URL_PATH + 'getinfo/', GetInfo.as_view(), name="Info"),
 ]
