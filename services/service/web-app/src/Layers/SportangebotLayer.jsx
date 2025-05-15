@@ -21,9 +21,31 @@ export default function SportangebotLayer() {
 
     const [selectedPoint, setSelectedPoint] = useState(null); // Ausgewählter Punkt
     const [radius, setRadius] = useState(1000); // Radius in meter
+    //let hallenbad; 
 
     const mapHook = useMap(); //Speichern der Koordinaten beim Klicken
-    
+
+    /*fetch('https://localhost:8443/api/getinfo/', {
+    method: 'GET',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Daten vom Server:', data.Hallenbad);
+        hallenbad = data.Hallenbad
+    })
+    .catch(error => {
+        console.error('Es gab ein Problem mit der Anfrage:', error);
+    });
+    */
+   
     useEffect(() => {
         const map = mapHook.map;
 
