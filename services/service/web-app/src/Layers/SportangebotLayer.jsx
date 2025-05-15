@@ -8,10 +8,10 @@ import {
   } from "@mapcomponents/react-maplibre";
 import { circle } from "@turf/turf";
 import spielplatz from "../Data/spielplatz.json";
-import hallenbad from "../Data/hallenbad.json";
+// import hallenbad from "../Data/hallenbad.json";
 import park from "../Data/park.json";
-import fussballplatz from "../Data/fussballplatz.json";
-import restaurant from "../Data/restaurant_modified2.json";
+//import fussballplatz from "../Data/fussballplatz.json";
+//import restaurant from "../Data/restaurant_modified2.json";
 import '../Styles/SportangebotLayer.css';
 
 export default function SportangebotLayer() {
@@ -21,31 +21,62 @@ export default function SportangebotLayer() {
 
     const [selectedPoint, setSelectedPoint] = useState(null); // Ausgewählter Punkt
     const [radius, setRadius] = useState(1000); // Radius in meter
-    //let hallenbad; 
+
+    // State for backend data
+    const [hallenbad, setHallenbad] = useState(null);
+    const [restaurant, setRestaurant] = useState(null);
+    const [fussballplatz, setFussballplatz] = useState(null);
 
     const mapHook = useMap(); //Speichern der Koordinaten beim Klicken
 
-    /*fetch('https://localhost:8443/api/getinfo/', {
-    method: 'GET',
-    headers: {
-        'Content-Type': 'application/json',
-    },
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.json();
-    })
-    .then(data => {
-        console.log('Daten vom Server:', data.Hallenbad);
-        hallenbad = data.Hallenbad
-    })
-    .catch(error => {
-        console.error('Es gab ein Problem mit der Anfrage:', error);
-    });
-    */
-   
+    // Helper to convert geom string (gismodels.PointField()) to GeoJSON geometry
+    const convertGeomToGeoJSON = (geom) => {
+        if (!geom) return null;
+        const match = geom.match(/POINT\s*\(([^)]+)\)/);
+        if (!match) return null;
+        const [lng, lat] = match[1].split(" ").map(Number);
+        return { type: "Point", coordinates: [lng, lat] };
+    };
+
+    // Fetch data from backend
+    useEffect(() => {
+        fetch('https://localhost:8443/api/getinfo/', {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' },
+        })
+        .then(response => response.json())
+        .then(data => {
+            setHallenbad({
+                type: "FeatureCollection",
+                features: data.Hallenbad.map(item => ({
+                    type: "Feature",
+                    geometry: convertGeomToGeoJSON(item.geom),
+                    properties: { ...item }
+                }))
+            });
+            setRestaurant({
+                type: "FeatureCollection",
+                features: data.Restaurant.map(item => ({
+                    type: "Feature",
+                    geometry: convertGeomToGeoJSON(item.geom),
+                    properties: { ...item }
+                }))
+            });
+            setFussballplatz({
+                type: "FeatureCollection",
+                features: data.Fussballplatz.map(item => ({
+                    type: "Feature",
+                    geometry: convertGeomToGeoJSON(item.geom),
+                    properties: { ...item }
+                }))
+            });
+        })
+        .catch(error => {
+            console.error('Es gab ein Problem mit der Anfrage:', error);
+        });
+    }, []);
+    
+
     useEffect(() => {
         const map = mapHook.map;
 
@@ -80,6 +111,12 @@ export default function SportangebotLayer() {
             map.off("contextmenu", handleContextMenu);
         };
     }, [mapHook.map]); // Dependency array, verhindert unnötige Aufrufe
+
+
+    if (!hallenbad || !restaurant || !fussballplatz) {
+        return <div>Lade Daten...</div>;
+    }
+
 
      // Funktion um den Punkt zu löschen
      const clearSelectedPoint = () => {
@@ -160,31 +197,24 @@ export default function SportangebotLayer() {
         });
     };
 
-    const filteredHallenbad = filterOpen 
-    ? { 
-        ...hallenbad, 
-        features: filterFeaturesByRadius({
-            ...hallenbad,
-            features: filterByTime(hallenbad),
-        }),
-    } 
-    : { 
-        ...hallenbad, 
-        features: filterFeaturesByRadius(hallenbad),
-    };
+    
 
-const filteredRestaurant = filterOpen 
-    ? { 
-        ...restaurant, 
-        features: filterFeaturesByRadius({
-            ...restaurant,
-            features: filterByTime(restaurant),
-        }),
-    } 
-    : { 
-        ...restaurant, 
-        features: filterFeaturesByRadius(restaurant),
-    };
+   const filteredHallenbad = filterOpen
+        ? { ...hallenbad, features: filterFeaturesByRadius({ ...hallenbad, features: filterByTime(hallenbad) }) }
+        : { ...hallenbad, features: filterFeaturesByRadius(hallenbad) };
+
+    const filteredRestaurant = filterOpen 
+        ? { 
+            ...restaurant, 
+            features: filterFeaturesByRadius({
+                ...restaurant,
+                features: filterByTime(restaurant),
+            }),
+        } 
+        : { 
+            ...restaurant, 
+            features: filterFeaturesByRadius(restaurant),
+        };
 
     const filteredSpielplatz =    { ...spielplatz, features: filterFeaturesByRadius(spielplatz) };
     const filteredPark =          { ...park, features: filterFeaturesByRadius(park) };

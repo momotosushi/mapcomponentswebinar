@@ -17,7 +17,7 @@ class Hallenbad(models.Model):
     email = models.EmailField(null=True, blank=True)
     adresse = models.TextField(null=True, blank=True)
     oeffnungszeiten = models.JSONField(null=True, blank=True)  # Store opening hours as JSON
-    geom = gismodels.JSONField()  # Geospatial field for storing point data
+    geom = gismodels.PointField()  # Geospatial field for storing point data
 
     def __str__(self):
         return self.name or "Unnamed Hallenbad"

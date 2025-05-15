@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Hallenbad, Restaurant, Fussballplatz
+from djangoapi.models import Hallenbad, Restaurant, Fussballplatz
 
 @admin.register(Hallenbad)
 class HallenbadAdmin(admin.ModelAdmin):
