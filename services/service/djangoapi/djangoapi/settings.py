@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.gis',
     'djangoapi',
     'corsheaders',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
